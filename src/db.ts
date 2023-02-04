@@ -6,8 +6,8 @@ export const connectDB = async () => {
   try {
     mongoose.set("strictQuery", false);
     await mongoose.connect(mongoUri);
-    console.log("Connected to MongoDB");
+    console.log("Connected to MongoDB"); // eslint-disable-line
   } catch (error) {
-    console.error("Cannot connect to MongoDB");
+    console.error("Cannot connect to MongoDB"); // eslint-disable-line
   }
 };

@@ -2,13 +2,9 @@ import { IUser } from "@/types/user";
 
 import * as userRepository from "./user.repository";
 
-export const findUsers = async () => {
-  return userRepository.findUsers();
-};
+export const findUsers = async () => userRepository.findUsers();
 
-export const findUserById = async (id: string) => {
-  return userRepository.findUserById(id);
-};
+export const findUserById = async (id: string) => userRepository.findUserById(id);
 
 export const findUserByEmail = async (
   email: string,

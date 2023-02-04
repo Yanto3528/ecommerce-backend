@@ -29,6 +29,4 @@ export const createAndSendToken = (
 export const matchPassword = async (
   plainPassword: string,
   hashedPassword: string
-) => {
-  return await bcrypt.compare(plainPassword, hashedPassword);
-};
+) => await bcrypt.compare(plainPassword, hashedPassword);

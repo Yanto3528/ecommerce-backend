@@ -3,7 +3,7 @@ import { ErrorRequestHandler } from "express";
 export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   let statusCode = err.statusCode || 500;
   const status = err.status || "error";
-  let message = err.message;
+  let {message} = err;
 
   if (err.name === "ZodError") {
     message = err.issues[0].message;

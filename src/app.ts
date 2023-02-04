@@ -5,11 +5,11 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 
-dotenv.config();
-
 import { errorHandler } from "./middlewares";
 import { userRouter } from "./features/user/user.route";
 import { authRouter } from "./features/auth/auth.route";
+
+dotenv.config();
 
 const app = express();
 

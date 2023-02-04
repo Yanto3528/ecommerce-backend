@@ -3,6 +3,7 @@ import { SignUpBodyPayload, LoginBodyPayload } from "@/types/schema";
 import { BadRequestError } from "@/errors";
 
 import * as userService from "../user/user.service";
+
 import { createAndSendToken, matchPassword } from "./auth.helper";
 
 export const signUp = catchAsync<SignUpBodyPayload>(async (req, res) => {

@@ -7,7 +7,7 @@ const main = async () => {
   await connectDB();
 
   app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${port}`); // eslint-disable-line
   });
 };
 

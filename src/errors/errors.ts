@@ -8,27 +8,27 @@ export class BadRequestError extends CustomError {
 
 export class NotAuthorizedError extends CustomError {
   constructor(
-    message: string = "You are not authorized to view this resource"
+    message = "You are not authorized to view this resource"
   ) {
     super(message, 401);
   }
 }
 
 export class ForbiddenError extends CustomError {
-  constructor(message: string = "You are forbidden to access this resource") {
+  constructor(message = "You are forbidden to access this resource") {
     super(message, 403);
   }
 }
 
 export class NotFoundError extends CustomError {
-  constructor(message: string = "Content not found") {
+  constructor(message = "Content not found") {
     super(message, 404);
   }
 }
 
 export class ServerError extends CustomError {
   constructor(
-    message: string = "Something went wrong in the server. Please try again later"
+    message = "Something went wrong in the server. Please try again later"
   ) {
     super(message, 500);
   }
