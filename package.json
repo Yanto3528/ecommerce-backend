@@ -9,6 +9,13 @@
     "prepare": "husky install",
     "lint": "eslint src/**/*.ts --fix"
   },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "eslint src/**/*.ts --fix",
+      "prettier --write"
+    ],
+    "*.json": "prettier --write"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -45,6 +52,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.3",
     "ts-node": "^10.9.1",
