@@ -1,15 +1,14 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require("dotenv").config();
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 
 import { errorHandler } from "./middlewares";
-import { userRouter } from "./features/user/user.route";
+import { userRouter } from "./features/users/users.route";
 import { authRouter } from "./features/auth/auth.route";
-
-dotenv.config();
 
 const app = express();
 

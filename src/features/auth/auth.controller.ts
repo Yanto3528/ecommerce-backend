@@ -2,7 +2,7 @@ import { catchAsync } from "@/utils/helpers";
 import { SignUpBodyPayload, LoginBodyPayload } from "@/types/schema";
 import { BadRequestError } from "@/errors";
 
-import * as userService from "../user/user.service";
+import * as userService from "../users/users.service";
 
 import { createAndSendToken, matchPassword } from "./auth.helper";
 
@@ -19,6 +19,7 @@ export const signUp = catchAsync<SignUpBodyPayload>(async (req, res) => {
     lastName,
     email,
     password,
+    role: "user",
   });
 
   createAndSendToken(user.id, res, 201);

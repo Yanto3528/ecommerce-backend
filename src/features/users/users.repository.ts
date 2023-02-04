@@ -1,6 +1,6 @@
 import { IUser } from "@/types/user";
 
-import { User } from "./user.model";
+import { User } from "./users.model";
 
 export const findUsers = () => User.find();
 

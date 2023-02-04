@@ -23,6 +23,11 @@ const UserSchema = new Schema<IUser>(
       required: true,
       select: false,
     },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
   },
   {
     toObject: { virtuals: true },

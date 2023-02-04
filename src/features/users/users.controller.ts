@@ -1,6 +1,6 @@
 import { catchAsync } from "@/utils/helpers";
 
-import * as userService from "./user.service";
+import * as userService from "./users.service";
 
 export const getUsers = catchAsync(async (req, res, next) => {
   const users = await userService.findUsers();
