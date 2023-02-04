@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development && nodemon -r tsconfig-paths/register ./src/index.ts",
+    "dev": "nodemon -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc && tsc-alias",
     "prepare": "husky install",
     "lint:dev": "eslint src/**/*.ts --fix",

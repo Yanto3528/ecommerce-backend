@@ -18,3 +18,21 @@ export const createCategorySchema = z.object({
     })
     .optional(),
 });
+
+export const updateCategorySchema = z.object({
+  name: z.string().optional(),
+  description: z.string().optional(),
+  backgroundImage: z
+    .object({
+      url: z.string().optional(),
+      alt: z.string().optional(),
+    })
+    .optional(),
+  seo: z
+    .object({
+      title: z.string().optional(),
+      description: z.string().optional(),
+    })
+    .optional(),
+  slug: z.string().optional(),
+});

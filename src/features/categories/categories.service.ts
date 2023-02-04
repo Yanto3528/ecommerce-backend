@@ -1,4 +1,5 @@
 import { ICategory } from "@/types/categories";
+import { DeepPartial } from "@/types/common";
 
 import * as categoriesRepository from "./categories.repository";
 
@@ -17,7 +18,10 @@ export const createCategory = async (createInput: ICategory) => {
   return category;
 };
 
-export const updateCategory = (id: string, updateInput: Partial<ICategory>) => {
+export const updateCategory = (
+  id: string,
+  updateInput: DeepPartial<ICategory>
+) => {
   return categoriesRepository.updateCategory(id, updateInput);
 };
 
