@@ -7,7 +7,7 @@ const jwtExpires = process.env.JWT_EXPIRES || "";
 const cookieExpiresIn = Number(process.env.COOKIE_EXPIRES_IN) || 1;
 
 export const createAndSendToken = (
-  id: string,
+  id: number,
   res: Response,
   statusCode = 200
 ) => {

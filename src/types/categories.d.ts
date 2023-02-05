@@ -1,12 +1,9 @@
-import { Seo } from "./seo";
-
-export interface ICategory {
+export interface CreateCategoryDto {
   name: string;
   description?: string;
-  backgroundImage?: {
-    url: string;
-    alt?: string;
-  };
+  backgroundImageUrl?: string;
+  backgroundImageAlt?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   slug: string;
-  seo?: Seo;
 }

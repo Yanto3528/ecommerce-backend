@@ -7,7 +7,7 @@ export type DeepPartial<T> = T extends (args: any[]) => any
   ? DeepPartialObject<T>
   : T | undefined;
 
-type DeepPartialArray<T> = Array<DeepPartial<T>>;
+type DeepPartialArray<T> = Array<T>;
 type DeepPartialObject<T> = {
   [Key in keyof T]?: DeepPartial<T[Key]>;
 };

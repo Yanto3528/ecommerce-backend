@@ -1,16 +1,39 @@
-import { ICategory } from "@/types/categories";
+import { prisma } from "@/lib/prisma";
+import { CreateCategoryDto } from "@/types/categories";
 import { DeepPartial } from "@/types/common";
 
-import { Category } from "./categories.model";
+export const findCategories = () => {
+  return prisma.category.findMany();
+};
 
-export const findCategories = () => Category.find();
-export const findCategoryById = (id: string) => Category.findById(id);
-export const createCategory = (createInput: ICategory) =>
-  new Category(createInput);
+export const findCategoryById = (id: number) => {
+  return prisma.category.findFirst({ where: { id } });
+};
 
-export const updateCategory = (
-  id: string,
-  updateInput: DeepPartial<ICategory>
-) => Category.findByIdAndUpdate(id, updateInput, { new: true });
+export const createCategory = async (createInput: CreateCategoryDto) => {
+  const category = await prisma.category.create({
+    data: createInput,
+  });
 
-export const deleteCategory = (id: string) => Category.findByIdAndDelete(id);
+  return category;
+};
+
+export const updateCategory = async (
+  id: number,
+  updateInput: DeepPartial<CreateCategoryDto>
+) => {
+  const updatedCategory = await prisma.category.update({
+    where: {
+      id,
+    },
+    data: updateInput,
+  });
+
+  return updatedCategory;
+};
+
+export const deleteCategory = (id: number) => {
+  return prisma.category.delete({
+    where: { id },
+  });
+};

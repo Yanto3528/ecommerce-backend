@@ -14,19 +14,19 @@ categoryRouter.get("/", categoriesController.getCategories);
 categoryRouter.get("/:id", categoriesController.getCategory);
 categoryRouter.post(
   "/",
-  requireAuth("admin"),
+  requireAuth("ADMIN"),
   validateBody(createCategorySchema),
   categoriesController.addCategory
 );
 categoryRouter.put(
   "/:id",
-  requireAuth("admin"),
+  requireAuth("ADMIN"),
   validateBody(updateCategorySchema),
   categoriesController.updateCategory
 );
 categoryRouter.delete(
   "/:id",
-  requireAuth("admin"),
+  requireAuth("ADMIN"),
   categoriesController.deleteCategory
 );
 

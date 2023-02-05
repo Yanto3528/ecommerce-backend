@@ -9,30 +9,16 @@ export const createCategorySchema = z.object({
       invalid_type_error: "Description must be a string",
     })
     .optional(),
-  backgroundImage: z
-    .object({
-      url: z.string({
-        required_error: "Background image url is required",
-      }),
-      alt: z.string().optional(),
-    })
-    .optional(),
+  backgroundImageUrl: z.string().optional(),
+  backgroundImageAlt: z.string().optional(),
 });
 
 export const updateCategorySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
-  backgroundImage: z
-    .object({
-      url: z.string().optional(),
-      alt: z.string().optional(),
-    })
-    .optional(),
-  seo: z
-    .object({
-      title: z.string().optional(),
-      description: z.string().optional(),
-    })
-    .optional(),
+  backgroundImageUrl: z.string().optional(),
+  backgroundImageAlt: z.string().optional(),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
   slug: z.string().optional(),
 });

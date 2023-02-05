@@ -1,8 +1,8 @@
-export type UserRole = "user" | "admin";
-export interface IUser {
+export type UserRole = "USER" | "ADMIN";
+
+export interface CreateUserDto {
   firstName: string;
   lastName: string;
-  fullName?: string;
   email: string;
   password: string;
   role: UserRole;

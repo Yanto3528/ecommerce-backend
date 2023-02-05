@@ -1,10 +1,10 @@
-export interface IProduct {
+export interface CreateProductDto {
   name: string;
   description: string;
+  slug: string;
   price: number;
-  image: {
-    url: string;
-    alt: string;
-  }[];
+  imageUrl: string[];
   quantity: number;
+  seoTitle?: string;
+  seoDescription?: string;
 }

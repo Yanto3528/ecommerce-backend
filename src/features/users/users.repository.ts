@@ -1,11 +1,22 @@
-import { IUser } from "@/types/user";
+import { CreateUserDto } from "@/types/user";
+import { prisma } from "@/lib/prisma";
 
-import { User } from "./users.model";
+export const findUsers = () => {
+  return prisma.user.findMany();
+};
 
-export const findUsers = () => User.find();
+export const findUserById = (id: number) => {
+  return prisma.user.findFirst({ where: { id } });
+};
 
-export const findUserById = (id: string) => User.findById(id);
+export const findUserByEmail = (email: string) => {
+  return prisma.user.findUnique({ where: { email } });
+};
 
-export const findUserByEmail = (email: string) => User.findOne({ email });
+export const createUser = async (createUserInput: CreateUserDto) => {
+  const user = await prisma.user.create({
+    data: createUserInput,
+  });
 
-export const createUser = (createUserInput: IUser) => new User(createUserInput);
+  return user;
+};

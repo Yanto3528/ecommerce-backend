@@ -1,28 +1,27 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import jwt from "jsonwebtoken";
-import { Document } from "mongoose";
+import { Prisma } from "@prisma/client";
 
-import { User } from "@/features/users/users.model";
 import { catchAsync } from "@/utils/helpers";
 import { ForbiddenError, NotAuthorizedError } from "@/errors";
-import { UserRole, IUser } from "@/types/user";
+import { UserRole } from "@/types/user";
+import { prisma } from "@/lib/prisma";
 
 const jwtSecret = process.env.JWT_SECRET || "";
 
 interface JwtPayload {
-  id: string;
+  id: number;
 }
 
 declare global {
   namespace Express {
     export interface Request {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      user: Document<any, any, IUser>;
+      user: Prisma.UserGetPayload<Prisma.UserArgs>;
     }
   }
 }
 
-export const requireAuth = (requiredRole: UserRole = "user") =>
+export const requireAuth = (requiredRole: UserRole = "USER") =>
   catchAsync(async (req, res, next) => {
     const { token } = req.cookies;
     if (!token) {
@@ -32,7 +31,7 @@ export const requireAuth = (requiredRole: UserRole = "user") =>
     }
 
     const decoded = (await jwt.verify(token, jwtSecret)) as JwtPayload;
-    const user = await User.findById(decoded.id);
+    const user = await prisma.user.findFirst({ where: { id: decoded.id } });
     if (!user) {
       return next(
         new NotAuthorizedError("User belonging to this token no longer exists")
@@ -40,7 +39,7 @@ export const requireAuth = (requiredRole: UserRole = "user") =>
     }
 
     req.user = user;
-    if (user.role === "user" && requiredRole === "admin") {
+    if (user.role === "USER" && requiredRole === "ADMIN") {
       return next(new ForbiddenError());
     }
 

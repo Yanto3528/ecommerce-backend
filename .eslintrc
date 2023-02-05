@@ -28,6 +28,7 @@
     "class-methods-use-this": "off",
     "prefer-destructuring": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }],
+    "@typescript-eslint/no-non-null-assertion": "off",
     "no-unused-vars": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "import/prefer-default-export": "off",

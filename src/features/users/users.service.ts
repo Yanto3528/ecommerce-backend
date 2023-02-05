@@ -1,10 +1,10 @@
-import { IUser } from "@/types/user";
+import { CreateUserDto } from "@/types/user";
 
 import * as userRepository from "./users.repository";
 
 export const findUsers = async () => userRepository.findUsers();
 
-export const findUserById = async (id: string) =>
+export const findUserById = async (id: number) =>
   userRepository.findUserById(id);
 
 export const findUserByEmail = async (
@@ -13,14 +13,15 @@ export const findUserByEmail = async (
 ) => {
   const { includePassword } = options;
 
-  return userRepository
-    .findUserByEmail(email)
-    .select(includePassword ? "+password" : "");
+  const user = await userRepository.findUserByEmail(email);
+
+  return user
+    ? { ...user, password: includePassword ? user.password : undefined }
+    : null;
 };
 
-export const createUser = async (createUserInput: IUser) => {
+export const createUser = async (createUserInput: CreateUserDto) => {
   const user = userRepository.createUser(createUserInput);
-  await user.save();
 
   return user;
 };
